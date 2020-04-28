@@ -5,4 +5,4 @@ for i in range(0, 10):
             if i != 8:
                 print("{0:0d}{1:0d}, ".format(i, (n + i)), end="")
             else:
-                print("{0:0d}{1:0d}".format(i, (n + i)), end="")
+                print("{0:0d}{1:0d}".format(i, (n + i)))
