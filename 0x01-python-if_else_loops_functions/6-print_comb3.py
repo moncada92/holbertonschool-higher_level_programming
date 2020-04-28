@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-for i in range(0, 10):
-    for n in range(1, 10):
-        if (n + i) < 10:
-            if i != 8:
-                print("{0:0d}{1:0d}, ".format(i, (n + i)), end="")
-            elif i == 8:
-                print("{0:0d}{1:0d}".format(i, (n + i)))
+for n in range(0, 10):
+    for i in range(0, 10):
+        if n < i and n != 8:
+            print("{:d}{:d}, ".format(n, i), end="")
+        if n < i and n == 8:
+            print("{:d}{:d}".format(n, i))
