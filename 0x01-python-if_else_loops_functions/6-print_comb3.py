@@ -4,5 +4,5 @@ for i in range(0, 10):
         if (n + i) < 10:
             if i != 8:
                 print("{0:0d}{1:0d}, ".format(i, (n + i)), end="")
-            else:
+            elif i == 8:
                 print("{0:0d}{1:0d}".format(i, (n + i)))
