@@ -16,10 +16,12 @@ int check_cycle(listint_t *list)
 
 	while (list1 && list2 && list2->next)
 	{
+		
 		list1 = list1->next;
 		list2 = list2->next->next;
 
 		if (list1 == list2)
+			printf("\n COINCIDEN \nlista1 -> %d == lista2 -> %d  \n", list1->n, list2->n);
 			return (1);
 	}
 
