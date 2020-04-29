@@ -1,4 +1,8 @@
 #!/usr/bin/python3
-for i in range(0, 58):
-    if (i not in range(26, 32)):
-        print("{:s}".format(chr(ord('z') - i)), end="")
+for i in range(26, 0, -1):
+    if i % 2 == 0:
+        z = 96
+    else:
+        z = 64
+
+    print("{:s}".format(chr(z + i)), end="")
