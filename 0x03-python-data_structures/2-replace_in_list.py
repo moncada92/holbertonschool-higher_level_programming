@@ -4,5 +4,5 @@ def replace_in_list(my_list, idx, element):
     if (idx < 0 or idx >= elements):
         return my_list
 
-    my_list[1] = element
+    my_list[idx] = element
     return my_list
