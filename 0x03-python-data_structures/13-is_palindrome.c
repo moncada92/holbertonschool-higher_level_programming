@@ -35,43 +35,32 @@ listint_t *add_node(listint_t **head, int n)
 
 int is_palindrome(listint_t **head)
 {
-	listint_t *tmp;
-	listint_t *copy = NULL;
-	listint_t *reverse = NULL;
-	int is_pal = 0;
+	listint_t *front, *rear;
+	int i = 0, j , count = (*head)->n;
 
-	if (*head == NULL)
-		return (is_pal);
+	if (*head == NULL || (*head)->next == NULL)
+		return (0);
 
-	tmp = *head;
-
-	while (tmp->next != NULL)
-	{
-		add_nodeint_end(&copy, tmp->n);
-		if (tmp->n == tmp->next->n)
-		{
-			add_node(&reverse, tmp->next->n);
-			while (tmp->next != NULL)
-			{
-				tmp = tmp->next;
-				add_node(&reverse, tmp->n);
-			}
-			while (reverse->next != NULL && copy->next != NULL)
-			{
-				if (reverse->n != copy->n)
-				{
-					is_pal = 0;
-				}
-				else
-				{
-					is_pal = 1;
-				}
-				reverse = reverse->next;
-				copy = copy->next;
-			}
-			break;
-		}
-		tmp = tmp->next;
-	}
-	return (is_pal);
+	while (i != count / 2)
+    {
+        front = rear = *head;
+        for (j = 0; j < i; j++)
+        {
+            front = front->next;
+        }
+        for (j = 0; j < count - (i + 1); j++)
+        {
+            rear = rear->next;
+        }
+        if (front->n != rear->n)
+        {
+            return 0;
+        }
+        else
+        {
+            i++;
+        }
+    }
+ 
+    return 1;
 }
