@@ -12,6 +12,5 @@ def only_diff_elements(set_1, set_2):
         for j in list_l:
             if i == j:
                 list_all.remove(i)
-    
-    return set(list_all) 
-    
+
+    return set(list_all)
