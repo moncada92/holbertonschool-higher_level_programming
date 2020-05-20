@@ -52,15 +52,14 @@ class Square:
         if self.__size > 0:
             k = self.__size
 
+            for r in range(0, self.__position[1]):
+                print()
+
             for i in range(0, self.__size):
                 j = 0
-                if self.__position[1] > 0:
-                    for n in range(0, self.__position[0]):
-                        print("_", end="")
-                else:
-                    for n in range(0, self.__position[0]):
-                        print(" ", end="")
 
+                for n in range(0, self.__position[0]):
+                    print(" ", end="")
                 while (k > j):
                     print("#", end="")
                     j += 1
