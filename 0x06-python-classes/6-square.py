@@ -52,7 +52,6 @@ class Square:
     def my_print(self):
 
         if self.__size > 0:
-            k = self.__size
 
             for r in range(0, self.__position[1]):
                 print()
@@ -62,9 +61,8 @@ class Square:
 
                 for n in range(0, self.__position[0]):
                     print(" ", end="")
-                while (k > j):
+                for j in range(self.__size):
                     print("#", end="")
-                    j += 1
                 print("")
         else:
             print("")
