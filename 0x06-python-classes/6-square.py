@@ -18,7 +18,7 @@ class Square:
         if (type(position[0]) is not int) or (type(position[1]) is not int):
             raise TypeError(err)
 
-        if type(self.__position) != tuple or len(self.__position) != 2:
+        if type(position) != tuple or len(position) != 2:
             raise TypeError(err)
 
         if position[0] >= 0 and position[1] >= 0:
