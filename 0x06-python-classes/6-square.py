@@ -17,7 +17,7 @@ class Square:
             if position[0] >= 0 and position[1] >= 0:
                 self.__position = position
             else:
-                raise ValueError("size must be >= 0")
+                raise ValueError("position must be a tuple of 2 positive integers")
         else:
             raise TypeError("position must be a tuple of 2 positive integers")
 
