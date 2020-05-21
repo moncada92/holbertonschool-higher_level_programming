@@ -1,0 +1,44 @@
+The ``0-add integer`` module
+============================
+
+Using ``Addition of two integers or floats``
+-----------------------------------
+
+This is an example text file in reStructuredText format.  First import
+``factorial`` from the ``example`` module:
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+Validate cases:
+
+	 >>> add_integer(1,2)
+	 3
+	 >>> add_integer(100,-2)
+	 98
+	 >>> add_integer(2)
+	 100
+	 >>> add_integer(100.3, -2)
+	 98
+	 >>> add_integer(0x16)
+	 120
+	 >>> add_integer(4,"School")
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: b must be an integer
+     >>> add_integer("a","b")
+     Traceback (most recent call last):
+     ...
+     TypeError: a must be an integer
+     >>> add_integer([2,4])
+     Traceback (most recent call last):
+     ...
+     TypeError: a must be an integer
+     >>> add_integer({"a":4})
+     Traceback (most recent call last):
+     ...
+     TypeError: a must be an integer
+     >>> add_integer('num\'')
+     Traceback (most recent call last):
+     ...
+     TypeError: a must be an integer
+     
