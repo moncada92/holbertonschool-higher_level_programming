@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""
-Function print square
-Return: squares
 
+"""
+Module print_square
+print_square
 """
 
 
