@@ -6,14 +6,23 @@ each of these characters: ., ? and :
 
 
 def text_indentation(text):
-    """Print the square with the caracter #"""
-    if type(text) is not str:
+    """
+       Prints indent text
+    """
+
+    if type(text) != str or text is None or len(text) < 0:
         raise TypeError("text must be a string")
-    i = 0
-    while i < len(text):
-        print("{}".format(text[i]), end="")
-        if text[i] in [".", "?", ":"]:
-            print("")
-            print("")
-            i += 1
-        i += 1
+    aux = 0
+    for c in text:
+        if c == '?' or c == ':' or c == '.':
+            print(c, end="\n\n")
+            aux = 1
+        else:
+            if aux == 0:
+                print(c, end="")
+            else:
+                if c == ' ' or c == '\t':
+                    pass
+                else:
+                    print(c, end="")
+                    aux = 0
