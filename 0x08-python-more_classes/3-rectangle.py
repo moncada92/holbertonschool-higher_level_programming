@@ -44,7 +44,7 @@ class Rectangle:
     def area(self):
         """Method get Area"""
         return self.width * self.height
-    
+
     def perimeter(self):
         """Method get perimeter"""
         if self.height == 0 or self.width == 0:
@@ -57,10 +57,10 @@ class Rectangle:
         if self.height == 0 or self.width == 0:
             return ""
         num_hash = ""
-        for  i in range(self.height):
+        for i in range(self.height):
             for j in range(self.width):
                 num_hash += "#"
             num_hash += '\n'
-        
+
         num_hash = num_hash[:-1]
         return num_hash
