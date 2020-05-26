@@ -1,0 +1,96 @@
+#!/usr/bin/python3
+"""
+Write a class Rectangle that defines a rectangle
+"""
+
+
+class Rectangle:
+    """
+    Class Rectangle validated privated instance attribute width and height
+    """
+
+    number_of_instances = 0
+    print_symbol = "#"
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        if type(rect_1) is not Rectangle:
+            raise TypeError("rect_1 must be an instance of Rectangle")
+
+        if type(rect_2) is not Rectangle:
+            raise TypeError("rect_2 must be an instance of Rectangle")
+
+        if rect_1.area() > rect_2.area():
+            return rect_1
+        elif rect_1.area() < rect_2.area():
+            return rect_2
+        else:
+            return rect_1
+
+    def __init__(self, width=0, height=0):
+        """Constructor Function using property and setter"""
+        self.width = width
+        self.height = height
+        Rectangle.number_of_instances += 1
+
+    @property
+    def width(self):
+        """Method recover the value Width Rectangle"""
+        return self.__width
+
+    @width.setter
+    def width(self, value):
+        """Method Evaluate the value of width"""
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+        if value < 0:
+            raise ValueError("width must be >= 0")
+        self.__width = value
+
+    @property
+    def height(self):
+        """Method recover the value Height Rectangle"""
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        """Method Evaluate the value of heigth"""
+        if type(value) is not int:
+            raise TypeError("height must be an integer")
+        if value < 0:
+            raise ValueError("height must be >= 0")
+        self.__height = value
+
+    def area(self):
+        """Method get Area"""
+        return self.width * self.height
+
+    def perimeter(self):
+        """Method get perimeter"""
+        if self.height == 0 or self.width == 0:
+            print()
+            return 0
+        else:
+            return (self.width * 2) + (self.height * 2)
+
+    def __str__(self):
+        """return hash to rectangle"""
+        if self.height == 0 or self.width == 0:
+            return ""
+        num_hash = ""
+        simbol_hash = self.print_symbol
+        for i in range(self.height):
+            for j in range(self.width):
+                num_hash += str(simbol_hash)
+            num_hash += '\n'
+
+        num_hash = num_hash[:-1]
+        return num_hash
+
+    def __repr__(self):
+        """ return value the instance the class"""
+        return "Rectangle({:d}, {:d})".format(self.width, self.height)
+
+    def __del__(self):
+        Rectangle.number_of_instances -= 1
+        print("Bye rectangle...")
