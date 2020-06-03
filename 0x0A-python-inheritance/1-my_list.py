@@ -1,11 +1,8 @@
 #!/usr/bin/python3
-"""
-this module define class my_list
-"""
-
-
 class MyList(list):
-    """This is a class of a MyList"""
+    """
+    class MyList that inherits from list
+    """
     def print_sorted(self):
         """
         Public instance method: that prints the list,
