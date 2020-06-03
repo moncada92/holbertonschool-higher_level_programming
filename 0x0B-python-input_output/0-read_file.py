@@ -7,6 +7,6 @@ module for read_file.
 
 def read_file(filename=""):
     """Read a text file"""
-    with open("my_file_0.txt", 'r') as f:
-        content = read_data = f.read()
+    with open(filename, 'r') as f:
+        content = f.read()
     print(content, end="")
