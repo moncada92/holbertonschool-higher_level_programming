@@ -4,7 +4,7 @@ this module define class base_geometry
 """
 
 
-class BaseGeometry():
+class BaseGeometry:
     """This is a class of a base_geometry"""
     def area(self):
         raise Exception("area() is not implemented")
