@@ -23,7 +23,7 @@ class Student():
             if is_attrs is not None:
                 dict[i] = is_attrs
         return dict
-    
+
     def reload_from_json(self, json):
         """change all attributes"""
         for p, r in json.items():
