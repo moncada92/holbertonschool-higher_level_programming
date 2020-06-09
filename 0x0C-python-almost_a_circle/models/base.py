@@ -42,8 +42,6 @@ class Base:
         for i in list_objs:
             if not isinstance(i, Base):
                 raise TypeError("it is not instance")
-            if same_instance != type(i):
-                raise TypeError("it is not same instance")
             lists.append(i.to_dictionary())
 
         dicts = cls.to_json_string(lists)
