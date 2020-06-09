@@ -155,7 +155,7 @@ class Testsquare(unittest.TestCase):
         r2 = {'id': 9, 'x': 2, 'size': 10, 'y': 1}
         r3 = r1.to_dictionary()
         self.assertEqual(r2, r3)
-    
+
     def test_validate_24(self):
         s1 = Square(12, 12, 2)
         s2 = Square(2, 4)
@@ -164,7 +164,7 @@ class Testsquare(unittest.TestCase):
             ' {"x": 4, "y": 0, "id": 22, "size": 2}]'
         with open("Square.json", "r") as file:
             self.assertEqual(len(file.read()), len(res))
-   
+
     def test_validate_25(self):
         s1 = Square(3, 5, 1)
         s1_dictionary = s1.to_dictionary()
