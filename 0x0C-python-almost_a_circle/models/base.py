@@ -37,9 +37,12 @@ class Base:
             return lists
 
         same_instance = type(list_objs[0])
+
         for i in list_objs:
-            if  type(i) != same_instance:
+            if type(i) != same_instance:
                 raise ValueError("all elements of list_objs must match")
+
+        for i in list_objs:
             lists.append(i.to_dictionary())
 
         dicts = cls.to_json_string(lists)
