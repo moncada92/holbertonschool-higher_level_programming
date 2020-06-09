@@ -92,7 +92,7 @@ class Rectangle(Base):
             print()
 
     def __str__(self):
-        """"print atributes rectangle""""
+        """"print atributes rectangle"""
         objt = "[Rectangle] ({}) {}/{}".format(self.id, self.x, self.y)
         return objt+" - {}/{}".format(self.width, self.height)
 
