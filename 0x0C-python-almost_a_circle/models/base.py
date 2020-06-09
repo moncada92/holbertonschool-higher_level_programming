@@ -32,13 +32,18 @@ class Base:
         if type(list_objs) is not list:
             raise TypeError("it not is a list")
 
-        if list_objs is [None, 0]:
+        if list_objs is None or list_objs == []:
             return lists
 
         filename = cls.__name__ + ".json"
+
+        same_instance = type(list_objs[0])
+
         for i in list_objs:
             if not isinstance(i, Base):
                 raise TypeError("it is not instance")
+            if same_instance != type(i):
+                raise TypeError("it is not same instance")
             lists.append(i.to_dictionary())
 
         dicts = cls.to_json_string(lists)
