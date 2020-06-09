@@ -163,7 +163,7 @@ class TestRectangle(unittest.TestCase):
     def test_validate_23(self):
         """Case 23"""
         r1 = Rectangle(10, 2, 1, 9)
-        r2 = {'x': 1, 'width': 10, 'id': 9, 'height': 2, 'y': 9}
+        r2 = {'x': 1, 'width': 10, 'id': 21, 'height': 2, 'y': 9}
         r3 = r1.to_dictionary()
         self.assertEqual(r2, r3)
     
