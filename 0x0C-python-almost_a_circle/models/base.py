@@ -37,11 +37,7 @@ class Base:
 
         filename = cls.__name__ + ".json"
 
-        same_instance = type(list_objs[0])
-
         for i in list_objs:
-            if not isinstance(i, Base):
-                raise TypeError("it is not instance")
             lists.append(i.to_dictionary())
 
         dicts = cls.to_json_string(lists)
