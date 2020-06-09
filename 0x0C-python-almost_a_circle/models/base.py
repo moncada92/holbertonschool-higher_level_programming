@@ -4,6 +4,7 @@ Module to class Base
 """
 
 import json
+import os
 
 
 class Base:
@@ -21,7 +22,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        if list_dictionaries is [None, ""]:
+        if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         return json.dumps(list_dictionaries)
 
@@ -58,3 +59,15 @@ class Base:
             tmp = cls(1)
             tmp.update(**dictionary)
             return tmp
+
+    @classmethod
+    def load_from_file(cls):
+        filename = cls.__name__ + '.json'
+        list_n = []
+
+        if os.path.exists(filename):
+            with open(filename, 'r') as f:
+                tmp = cls.from_json_string(f.readline())
+                for i in tmp:
+                    list_n.append(cls.create(**i))
+        return list_n
