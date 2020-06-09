@@ -36,11 +36,14 @@ class Base:
         if list_objs is [None, []]:
             return lists
 
-        filename = cls.__name__ + ".json"
+        same_instance = type(list_objs[0])
         for i in list_objs:
+            if  type(i) != same_instance:
+                raise ValueError("all elements of list_objs must match")
             lists.append(i.to_dictionary())
 
         dicts = cls.to_json_string(lists)
+        filename = cls.__name__ + ".json"
 
         with open(filename, 'w+', encoding='utf-8') as f:
             f.write(dicts)
