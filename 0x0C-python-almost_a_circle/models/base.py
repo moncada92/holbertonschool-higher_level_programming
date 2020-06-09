@@ -28,18 +28,22 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        if type(list_objs) != list and list_objs is not None:
+        lists = []
+
+        if type(list_objs) != list:
             raise TypeError("list_objs must be a list")
-        if list_objs is None or list_objs == []:
-            out = []
-        else:
-            first = type(list_objs[0])
-            if any(type(i) != first for i in list_objs):
-                raise ValueError("all elements of list_objs must match")
-            out = [i.to_dictionary() for i in list_objs]
+
+        if list_objs is [None, []]:
+            return lists
+
         filename = cls.__name__ + ".json"
-        with open(filename, "w") as f:
-            f.write(cls.to_json_string(out))
+        for i in list_objs:
+            lists.append(i.to_dictionary())
+
+        dicts = cls.to_json_string(lists)
+
+        with open(filename, 'w+', encoding='utf-8') as f:
+            f.write(dicts)
 
     @staticmethod
     def from_json_string(json_string):
