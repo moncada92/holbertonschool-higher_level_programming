@@ -21,10 +21,12 @@ class Rectangle(Base):
 
     @property
     def width(self):
+        """get recover the value width Rectangle"""
         return self.__width
 
     @width.setter
     def width(self, value):
+        """setter check the value of width"""
         if type(value) is not int:
             raise TypeError("width must be an integer")
         if value <= 0:
@@ -33,10 +35,12 @@ class Rectangle(Base):
 
     @property
     def height(self):
+        """get the value width Rectangle"""
         return self.__height
 
     @height.setter
     def height(self, value):
+        """setter check the value of height"""
         if type(value) is not int:
             raise TypeError("height must be an integer")
         if value <= 0:
@@ -45,10 +49,12 @@ class Rectangle(Base):
 
     @property
     def x(self):
+        """get the value x Rectangle"""
         return self.__x
 
     @x.setter
     def x(self, value):
+        """setter check the value of x"""
         if type(value) is not int:
             raise TypeError("x must be an integer")
         if value < 0:
@@ -57,10 +63,12 @@ class Rectangle(Base):
 
     @property
     def y(self):
+        """get the value y Rectangle"""
         return self.__y
 
     @y.setter
     def y(self, value):
+        """setter check the value of y"""
         if type(value) is not int:
             raise TypeError("y must be an integer")
         if value < 0:
@@ -68,10 +76,12 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
+        """get area rectangle"""
         result = self.width * self.height
         return result
 
     def display(self):
+        """print area rectangle"""
         for n in range(self.y):
             print()
         for i in range(self.height):
@@ -82,11 +92,12 @@ class Rectangle(Base):
             print()
 
     def __str__(self):
+        """"print atributes rectangle""""
         objt = "[Rectangle] ({}) {}/{}".format(self.id, self.x, self.y)
         return objt+" - {}/{}".format(self.width, self.height)
 
     def update(self, *args, **kwargs):
-
+        """update atributes rectangle"""
         if args:
             a = ["id", "width", "height", "x", "y"]
             for i, e in enumerate(args):
@@ -97,6 +108,7 @@ class Rectangle(Base):
                 setattr(self, x, y)
 
     def to_dictionary(self):
+        """convert atributes to dict in class rectangle"""
         dict_rect = {
             'x': self.x,
             'width': self.width,
