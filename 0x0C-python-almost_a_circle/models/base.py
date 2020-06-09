@@ -43,7 +43,7 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        if json_string is [None, ""]:
+        if json_string is None or json_string == "":
             return []
         if type(json_string) != str:
             raise TypeError("json_string must be a string")
