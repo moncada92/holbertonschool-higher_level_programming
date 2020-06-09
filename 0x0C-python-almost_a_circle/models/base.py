@@ -30,7 +30,7 @@ class Base:
     def save_to_file(cls, list_objs):
         lists = []
 
-        if type(list_objs) != list:
+        if type(list_objs) != list and list_objs is not None:
             raise TypeError("list_objs must be a list")
 
         if list_objs is [None, []]:
