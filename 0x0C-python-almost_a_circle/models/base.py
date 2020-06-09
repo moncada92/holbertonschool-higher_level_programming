@@ -30,7 +30,7 @@ class Base:
     def save_to_file(cls, list_objs):
         lists = []
 
-        if list_objs is [None, 0]:
+        if list_objs is [None, []]:
             return lists
 
         filename = cls.__name__ + ".json"
