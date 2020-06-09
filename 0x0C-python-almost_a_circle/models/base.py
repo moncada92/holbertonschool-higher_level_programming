@@ -29,11 +29,16 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         lists = []
+        if type(list_objs) is not list:
+            raise TypeError("it not is a list")
+
         if list_objs is [None, 0]:
             return lists
 
         filename = cls.__name__ + ".json"
         for i in list_objs:
+            if not isinstance(i, Base):
+                raise TypeError("it is not instance")
             lists.append(i.to_dictionary())
 
         dicts = cls.to_json_string(lists)
