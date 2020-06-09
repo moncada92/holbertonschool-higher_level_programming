@@ -48,7 +48,13 @@ class Base:
         if type(json_string) != str:
             raise TypeError("json_string must be a string")
 
-        return json.loads(json_string)
+        json_dates = json.loads(json_string)
+
+        for date in json_dates:
+            if type(date) != dict:
+                raise ValueError("json_string must contain dictionaries")
+
+        return json_dates
 
     @classmethod
     def create(cls, **dictionary):
