@@ -109,11 +109,10 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """convert atributes to dict in class rectangle"""
-        dict_rect = {
-            'x': self.x,
-            'width': self.width,
-            'id': self.id,
-            'height': self.height,
-            'y': self.y
-        }
-        return dict_rect
+        dic = {}
+        dic['x'] = self.x
+        dic['y'] = self.y
+        dic['id'] = self.id
+        dic['height'] = self.height
+        dic['width'] = self.width
+        return dic
