@@ -33,17 +33,14 @@ class Base:
         if type(list_objs) != list and list_objs is not None:
             raise TypeError("list_objs must be a list")
 
-        if list_objs is [None, []]:
+        if list_objs is None or list_objs == []:
             return lists
 
         same_instance = type(list_objs[0])
 
-        for i in list_objs:
-            if type(i) != same_instance:
-                raise ValueError("all elements of list_objs must match")
-
-        for i in list_objs:
-            lists.append(i.to_dictionary())
+        if any(type(i) != same_instance for i in list_objs):
+            raise ValueError("all elements of list_objs must match")
+        lists = [i.to_dictionary() for i in list_objs]
 
         dicts = cls.to_json_string(lists)
         filename = cls.__name__ + ".json"
