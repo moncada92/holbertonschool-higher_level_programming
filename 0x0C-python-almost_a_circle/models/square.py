@@ -11,18 +11,22 @@ class Square(Rectangle):
     Class Square the project
     """
     def __init__(self, size, x=0, y=0, id=None):
+        """Constructor the class"""
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
+        """"print atributes Square"""
         objt = "[Square] ({}) {}/{}".format(self.id, self.x, self.y)
         return objt+" - {}".format(self.height)
 
     @property
     def size(self):
+        """get the value size Square"""
         return self.width
 
     @size.setter
     def size(self, value):
+        """set the value size Square"""
         if type(value) is not int:
             raise TypeError("width must be an integer")
         if value <= 0:
@@ -31,6 +35,7 @@ class Square(Rectangle):
         self.width = value
 
     def update(self, *args, **kwargs):
+        """update atributes Square"""
         i = 0
         for arg in args:
             if i == 0:
@@ -56,6 +61,7 @@ class Square(Rectangle):
                 i += 1
 
     def to_dictionary(self):
+        """convert atributes to dict in class Square"""
         dic_rect = {}
         dic_rect['x'] = self.x
         dic_rect['y'] = self.y
