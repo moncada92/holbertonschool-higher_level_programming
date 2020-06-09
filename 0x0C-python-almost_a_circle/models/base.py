@@ -29,9 +29,7 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         lists = []
-        if type(list_objs) is not list:
-            raise TypeError("it not is a list")
-
+        
         if list_objs is None or list_objs == []:
             return lists
 
