@@ -68,9 +68,13 @@ class TestBase(unittest.TestCase):
         """Cases 9"""
         base12 = Base()
         self.assertEqual(str(type(base12)), "<class 'models.base.Base'>")
-        self.assertEqual(base12.__dict__, {"id": 4})
+        self.assertEqual(base12.__dict__, {"id": 5})
 
     def test_validate_10(self):
         """Cases 10"""
         list_n = Base.to_json_string(None)
         self.assertEqual(list_n, "[]")
+
+    def test_validate_11(self):
+        base0 = Base(None)
+        self.assertEqual(base0.id, 3)
