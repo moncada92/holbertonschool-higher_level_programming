@@ -30,8 +30,15 @@ class Testsquare(unittest.TestCase):
     def test_validate_2(self):
         "Cases 2"
         rect = Square(1)
+        self.assertEqual(rect.width, 1)
+        self.assertEqual(rect.height, 1)
         self.assertEqual(rect.x, 0)
         self.assertEqual(rect.y, 0)
+        rect_1 = Square(1, 2, 4)
+        self.assertEqual(rect_1.width, 1)
+        self.assertEqual(rect_1.height, 1)
+        self.assertEqual(rect_1.x, 2)
+        self.assertEqual(rect_1.y, 4)
 
     def test_validate_3(self):
         "Cases 3"
@@ -185,3 +192,77 @@ class Testsquare(unittest.TestCase):
         Square.save_to_file(e)
         with open("Square.json", "r") as file:
             self.assertEqual(file.read(), '[]')
+
+    def test_validate_28(self):
+        with self.assertRaises(TypeError) as e:
+            s = Square()
+        self.assertEqual(
+            "__init__() missing 1 required positional argument: 'size'",
+            str(e.exception))
+
+    def test_validate_29(self):
+        s = Square(6, 0)
+        self.assertEqual(s.x, 0)
+        with self.assertRaises(ValueError) as e:
+            s = Square(0, 2)
+        self.assertEqual(
+            "width must be > 0",
+            str(e.exception))
+        s = Square(1, 0, 0, 0)
+        self.assertEqual(s.x, 0)
+        self.assertEqual(s.y, 0)
+        self.assertEqual(s.id, 0)
+
+    def test_validate_30(self):
+        s = Square(4, 2)
+        self.assertEqual(s.area(), 16)
+        s = Square(2, 20, 1)
+        self.assertEqual(s.area(), 4)
+        s = Square(10, 5, 6, 2)
+        self.assertEqual(s.area(), 100)
+        s = Square(12, 7, 4, 6)
+        self.assertEqual(s.area(), 144)
+
+    def test_validate_31(self):
+        s = Square(3, 7, 1, 1)
+        self.assertEqual(s.__str__(), "[Square] (1) 7/1 - 3")
+        s = Square(1, 1, 0)
+        self.assertEqual(s.__str__(), "[Square] (32) 1/0 - 1")
+        s = Square(1, 1)
+        self.assertEqual(s.__str__(), "[Square] (33) 1/0 - 1")
+
+    def test_validate_32(self):
+        r = Square(5)
+        self.assertEqual(r.size, 5)
+        r.size = 25
+        self.assertEqual(r.size, 25)
+        with self.assertRaises(TypeError) as e:
+            r.size = "hello"
+        self.assertEqual(
+            "width must be an integer",
+            str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            r.size = [1, 2]
+        self.assertEqual(
+            "width must be an integer",
+            str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            r.size = (2,)
+        self.assertEqual(
+            "width must be an integer",
+            str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            r.size = {"a": 1}
+        self.assertEqual(
+            "width must be an integer",
+            str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            r.size = True
+        self.assertEqual(
+            "width must be an integer",
+            str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            r.size = {1, 2}
+        self.assertEqual(
+            "width must be an integer",
+            str(e.exception))
