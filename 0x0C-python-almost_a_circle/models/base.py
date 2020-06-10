@@ -78,3 +78,30 @@ class Base:
                 for i in tmp:
                     list_n.append(cls.create(**i))
         return list_n
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        if type(list_objs) != list and list_objs is not None:
+            raise TypeError("list_objs must be a list")
+        if list_objs is None or list_objs == []:
+            out = []
+        else:
+            first = type(list_objs[0])
+            if any(type(i) != first for i in list_objs):
+                raise ValueError("all elements of list_objs must match")
+            out = [i.to_dictionary() for i in list_objs]
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w") as f:
+            f.write(cls.to_json_string(out))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        filename = cls.__name__ + '.csv'
+        list_n = []
+
+        if os.path.exists(filename):
+            with open(filename, 'r') as f:
+                tmp = cls.from_json_string(f.readline())
+                for i in tmp:
+                    list_n.append(cls.create(**i))
+        return list_n

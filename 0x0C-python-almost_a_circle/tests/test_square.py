@@ -292,4 +292,3 @@ class Testsquare(unittest.TestCase):
         Square.save_to_file(None)
         with open("Square.json", "r") as file:
             self.assertEqual(len(file.read()), 2)
-    
