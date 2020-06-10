@@ -266,3 +266,30 @@ class Testsquare(unittest.TestCase):
         self.assertEqual(
             "width must be an integer",
             str(e.exception))
+
+    def test_validate_33(self):
+        s = Square(12, 2, 1, 9)
+        s_dict = {'x': 2, 'size': 12, 'y': 1, 'id': 9}
+        self.assertEqual(s.to_dictionary(), s_dict)
+        self.assertEqual(s.to_dictionary() is s_dict, False)
+        s = Square(12, 4, 15)
+        s_dict = {'x': 4, 'id': 35, 'y': 15, 'size': 12}
+        self.assertEqual(s.to_dictionary(), s_dict)
+        self.assertEqual(s.to_dictionary() is s_dict, False)
+        s = Square(96, 313)
+        s_dict = {'x': 313, 'id': 36, 'y': 0, 'size': 96}
+        self.assertEqual(s.to_dictionary(), s_dict)
+        self.assertEqual(s.to_dictionary() is s_dict, False)
+
+    def test_validate_34(self):
+        r = Square(12, 12, 2)
+        d = r.to_dictionary()
+        json_d = Base.to_json_string([d])
+        self.assertEqual(type(json_d), str)
+        self.assertEqual(d, {'id': 37, 'x': 12, 'y': 2, 'size': 12})
+
+    def test_validate_35(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            self.assertEqual(len(file.read()), 2)
+    
