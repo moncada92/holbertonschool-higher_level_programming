@@ -5,6 +5,7 @@
 import io
 import sys
 import unittest
+import contextlib
 from models.rectangle import Rectangle
 from models.base import Base
 
@@ -19,8 +20,8 @@ class TestRectangle(unittest.TestCase):
         "Cases 0"
         rect0 = Rectangle(1, 2)
         rect1 = Rectangle(3, 2)
-        self.assertEqual(rect0.id, 3)
-        self.assertEqual(rect1.id, 4)
+        self.assertEqual(rect0.id, 6)
+        self.assertEqual(rect1.id, 7)
 
     def test_validate_1(self):
         "Cases 1"
@@ -163,10 +164,10 @@ class TestRectangle(unittest.TestCase):
     def test_validate_23(self):
         """Case 23"""
         r1 = Rectangle(10, 2, 1, 9)
-        r2 = {'x': 1, 'width': 10, 'id': 21, 'height': 2, 'y': 9}
+        r2 = {'x': 1, 'width': 10, 'id': 24, 'height': 2, 'y': 9}
         r3 = r1.to_dictionary()
         self.assertEqual(r2, r3)
-    
+
     def test_rectangle24(self):
         """Case 24"""
         r5 = Rectangle(2, 2)
@@ -186,3 +187,34 @@ class TestRectangle(unittest.TestCase):
         output = captured_output.getvalue()
         sys.stdout = sys.__stdout__
         self.assertEqual(output, '\n' * 2 + (' ' * 2 + '#' * 2 + '\n') * 3)
+
+    def test_rectangle26(self):
+        r = Rectangle(4, 6)
+        f = io.StringIO()
+        with contextlib.redirect_stdout(f):
+            r.display()
+        s = f.getvalue()
+        f6 = "####\n####\n####\n####\n####\n####\n"
+        self.assertEqual(s, f6)
+        r = Rectangle(2, 4)
+        f = io.StringIO()
+        with contextlib.redirect_stdout(f):
+            r.display()
+        s = f.getvalue()
+        t = "##\n##\n##\n##\n"
+        self.assertEqual(s, t)
+        r = Rectangle(1, 1)
+        f = io.StringIO()
+        with contextlib.redirect_stdout(f):
+            r.display()
+        s = f.getvalue()
+        o = "#\n"
+        self.assertEqual(s, o)
+
+    def test_rectangle27(self):
+        with self.assertRaises(TypeError) as e:
+            r100 = Rectangle()
+        self.assertEqual(
+            "__init__() missing 2 required positional arguments:" +
+            " 'width' and 'height'",
+            str(e.exception))
