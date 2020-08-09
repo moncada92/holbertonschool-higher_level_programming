@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 select all states in database
 """
@@ -15,6 +15,7 @@ if __name__ == "__main__":
 
     rows = cur.fetchall()
     for row in rows:
-        print(row)
+        if sys.argv[4] == row[1]:
+            print(row)
     cur.close()
     db.close()
