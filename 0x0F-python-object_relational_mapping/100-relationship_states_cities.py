@@ -5,9 +5,9 @@ select name
 
 if __name__ == "__main__":
     import sys
-    from model_state import Base, State
+    from relationship_state import State
+    from relationship_city import Base, City
     from sqlalchemy import (create_engine)
-    from model_city import City
     from sqlalchemy.orm import sessionmaker
 
     engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}".format(
