@@ -1,17 +1,21 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 select name
 """
 
-if __name__ == "__main__":
-    import sys
-    from relationship_state import State
-    from relationship_city import Base, City
-    from sqlalchemy import (create_engine)
-    from sqlalchemy.orm import sessionmaker
+from relationship_state import State
+from relationship_city import Base, City
+from sqlalchemy import (create_engine)
+from sqlalchemy.orm import sessionmaker
+import sys
 
-    engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}".format(
-                            sys.argv[1], sys.argv[2], sys.argv[3]),
+if __name__ == '__main__':
+    username = sys.argv[1]
+    password = sys.argv[2]
+    DB_name = sys.argv[3]
+
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+                           .format(username, password, DB_name),
                            pool_pre_ping=True)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
