@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """ get resquest with urllib"""
 import urllib.request
 import ssl
