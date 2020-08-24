@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """ get resquest with urllib"""
+
 import urllib.request
-import ssl
 
 if __name__ == "__main__":
-    context = ssl._create_unverified_context()
+
     req = urllib.request.Request("https://intranet.hbtn.io/status")
-    with urllib.request.urlopen(req, context=context) as res:
+    with urllib.request.urlopen(req) as res:
         read = res.read()
         print("Body response:")
         print("\t- type: {}".format(type(read)))
