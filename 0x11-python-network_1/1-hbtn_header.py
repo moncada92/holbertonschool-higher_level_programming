@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """display X-Request-Id"""
 import urllib.request
 import sys
