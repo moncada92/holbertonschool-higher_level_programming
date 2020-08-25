@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """ get id in github API """
 
 import requests
@@ -6,8 +6,8 @@ import sys
 
 if __name__ == "__main__":
     i = 0
-    repo_name = sys.argv[1]
-    owner = sys.argv[2]
+    repo_name = sys.argv[2]
+    owner = sys.argv[1]
     url = 'https://api.github.com/repos/{}/{}/commits'.format(repo_name, owner)
     r = requests.get(url)
 
