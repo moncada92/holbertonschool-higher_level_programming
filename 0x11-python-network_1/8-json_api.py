@@ -6,8 +6,8 @@ import sys
 
 if __name__ == "__main__":
     json = {'q': ""}
-    if len(argv) > 1:
-        json['q'] = argv[1]
+    if len(sys.argv) > 1:
+        json['q'] = sys.argv[1]
     response = requests.post("http://0.0.0.0:5000/search_user", json)
     if "json" not in response.headers.get('content-type'):
         print("Not a valid JSON")
