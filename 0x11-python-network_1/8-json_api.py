@@ -5,6 +5,7 @@ import requests
 import sys
 
 if __name__ == "__main__":
+
     payload = {'q': ""}
 
     if len(sys.argv) > 1:
@@ -16,6 +17,6 @@ if __name__ == "__main__":
     else:
         if r.json():
             res = r.json()
-            print("{} {}".format(res.get('id'), res.get('name')))
+            print("[{}] {}".format(res.get('id'), res.get('name')))
         else:
             print("No result")
