@@ -18,6 +18,6 @@ if __name__ == "__main__":
         for data in res:
             if i > 9:
                 break
-            print("{}: {}".format(data['sha'],
-                                  data['commit']['author']['name']))
+            print(data.get('sha') + ': ', end="")
+            print(data.get('commit').get('author').get('name'))
             i += 1
