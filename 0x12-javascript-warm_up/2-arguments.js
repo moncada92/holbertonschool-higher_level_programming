@@ -1,6 +1,7 @@
 #!/usr/bin/node
-if (process.argv[2] == null) {
-  console.log('No argument');
-} else {
+const size = process.argv.length;
+if (size <= 2) {
+    console.log('No argument');
+}else {
   console.log('Argument found');
 }
