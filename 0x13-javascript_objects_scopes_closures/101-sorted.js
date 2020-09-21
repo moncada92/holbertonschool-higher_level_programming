@@ -1,14 +1,12 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const dict = require('./101-data').dict;
 
-const newdict = {
-  1: [],
-  2: [],
-  3: []
-};
-
+const newdict = {};
 for (const [key, value] of Object.entries(dict)) {
+  if (newdict[value] === undefined) {
+    newdict[value] = [];
+  }
   newdict[value].push(key);
 }
 console.log(newdict);
