@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const dict = require('./101-data').dict;
 
@@ -8,14 +8,7 @@ const newdict = {
   3: []
 };
 
-for (const key in dict) {
-  if (dict[key] === 1) {
-    newdict[1].push(key);
-  } else if (dict[key] === 2) {
-    newdict[2].push(key);
-  } else if (dict[key] === 3) {
-    newdict[3].push(key);
-  }
+for (const [key, value] of Object.entries(dict)) {
+  newdict[value].push(key);
 }
-
 console.log(newdict);
