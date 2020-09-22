@@ -2,12 +2,10 @@
 
 const fs = require('fs');
 
-const cisfun = fs.readFileSync(process.argv[2], 'utf-8', (err, data) => {
+fs.readFile(`${process.argv[2]}`, (err, data) => {
   if (err) {
     console.log(err);
   } else {
-    return data;
+    console.log(data.toString('utf8'));
   }
 });
-
-console.log(cisfun);
