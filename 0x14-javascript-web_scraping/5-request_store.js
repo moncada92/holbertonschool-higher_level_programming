@@ -5,8 +5,7 @@ const fs = require('fs');
 const url = `${process.argv[2]}`;
 
 request({
-  url: url,
-  json: true
+  url: url
 }, (error, response, body) => {
   if (error) {
     console.log(error);
