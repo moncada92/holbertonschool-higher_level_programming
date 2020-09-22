@@ -1,7 +1,6 @@
 #!/usr/bin/node
 const request = require('request');
 const url = `${process.argv[2]}`;
-let count = 0;
 
 request({
   url: url,
@@ -14,13 +13,12 @@ request({
     const store = {};
     body.forEach(element => {
       const { userId, completed } = element;
-      if (store[userId] === undefined) {
-        count = 0;
-        store[userId] = count;
-      }
       if (completed) {
-        count++;
-        store[userId] = count;
+        if (store[userId]) {
+          store[userId]++;
+        } else {
+          store[userId] = 1;
+        }
       }
     });
     console.log(store);
