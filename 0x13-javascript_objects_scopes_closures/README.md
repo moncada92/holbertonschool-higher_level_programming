@@ -1,1 +1,1 @@
-<h1> Learn about Javascript - Objects, Scopes and Closures </h1>
+<h1> Javascript - Web scraping </h1>
