@@ -12,7 +12,7 @@ request({
     console.log(error);
   }
   if (response.statusCode === 200) {
-    fs.writeFile(process.argv[3], body, err => {
+    fs.writeFile(process.argv[3], body, 'utf8', err => {
       if (err) {
         console.log('error write the file');
       }
